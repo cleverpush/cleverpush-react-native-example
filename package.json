@@ -9,7 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "cleverpush-react-native": "^0.0.1",
+    "cleverpush-react-native": "git+https://github.com/cleverpush/cleverpush-react-native-sdk.git",
     "expo": "^30.0.1",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"

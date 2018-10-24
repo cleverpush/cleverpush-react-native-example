@@ -53,6 +53,11 @@
     return [[ExpoKit sharedInstance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(nonnull UILocalNotification *)notification
+{
+    [[ExpoKit sharedInstance] application:application didReceiveLocalNotification:notification];
+}
+
 #pragma mark - Notifications
 /*
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token
