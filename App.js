@@ -25,8 +25,10 @@ export default class App extends React.Component {
     CleverPush.setSubscriptionCountry('DE');
     // CleverPush.setSubscriptionLanguage('fr');
 
-
-    console.log('CleverPush: getNotifications', CleverPush.getNotifications());
+    // requires AppGroups + NotificationServiceExtension (read docs)
+    CleverPush.getNotifications((err, notifications) => {
+      console.log('CleverPush: getNotifications', err, notifications);
+    });
   }
 
   componentWillUnmount() {

@@ -1,3 +1,8 @@
-include ':app'
+apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 include ':cleverpush-react-native'
 project(':cleverpush-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/cleverpush-react-native/android')
+includeUnimodulesProjects()
+
+rootProject.name = 'cleverpush'
+
+include ':app'
