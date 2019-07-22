@@ -143,3 +143,9 @@ target 'cleverpush-react-native-test' do
     end
   end
 end
+
+target 'CleverPushNotificationServiceExtension' do
+
+  pod 'CleverPush'
+
+end

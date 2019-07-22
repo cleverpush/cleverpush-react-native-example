@@ -1,5 +1,6 @@
 package host.exp.exponent;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactPackage;
@@ -14,6 +15,14 @@ import host.exp.exponent.generated.DetachBuildConstants;
 import host.exp.exponent.experience.DetachActivity;
 
 public class MainActivity extends DetachActivity {
+
+  /*
+  @Override
+  public void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
+  }
+  */
 
   @Override
   public String publishedUrl() {

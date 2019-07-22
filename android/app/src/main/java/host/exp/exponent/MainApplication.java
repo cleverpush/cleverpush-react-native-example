@@ -11,6 +11,7 @@ import expolib_v1.okhttp3.OkHttpClient;
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
 import com.cleverpush.reactnative.ReactNativeCleverPushPackage;
+import com.facebook.soloader.SoLoader;
 
 public class MainApplication extends ExpoApplication {
 
@@ -27,7 +28,7 @@ public class MainApplication extends ExpoApplication {
 
         // Needed for `react-native link`
         // new MainReactPackage(),
-            new ReactNativeCleverPushPackage()
+        new ReactNativeCleverPushPackage()
     );
   }
 
@@ -45,4 +46,12 @@ public class MainApplication extends ExpoApplication {
     // Customize/override OkHttp client here
     return builder;
   }
+
+  /*
+  @Override
+  public void onCreate() { // <-- Check this block exists
+    super.onCreate();
+    SoLoader.init(this,  false); // <-- Check this line exists within the block
+  }
+  */
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert, TextInput, Button } from 'react-native';
 import CleverPush from 'cleverpush-react-native';
 
 export default class App extends React.Component {
@@ -7,7 +7,8 @@ export default class App extends React.Component {
     super();
 
     this.state = {
-      subscriptionId: null
+      subscriptionId: null,
+      country: 'DE'
     };
 
     this.onSubscribed = this.onSubscribed.bind(this);
@@ -19,6 +20,13 @@ export default class App extends React.Component {
 
     CleverPush.addEventListener('opened', this.onOpened);
     CleverPush.addEventListener('subscribed', this.onSubscribed);
+
+    console.log('setSubscriptionCountry DE');
+    CleverPush.setSubscriptionCountry('DE');
+    // CleverPush.setSubscriptionLanguage('fr');
+
+
+    console.log('CleverPush: getNotifications', CleverPush.getNotifications());
   }
 
   componentWillUnmount() {
@@ -28,6 +36,11 @@ export default class App extends React.Component {
 
   onOpened(openResult) {
     console.log('CleverPush: [JS] Notification opened:', openResult);
+
+    Alert.alert(
+      'Notification Opened: ' + (openResult.notification || {})._id,
+      (openResult.notification || {}).title
+    );
   }
 
   onSubscribed(subscribedResult) {
@@ -35,11 +48,38 @@ export default class App extends React.Component {
     this.setState({ subscriptionId: subscribedResult.id });
   }
 
+  setCountry() {
+    CleverPush.setSubscriptionCountry(this.state.country);
+    console.log('setSubscriptionCountry ', this.state.country);
+  }
+
+  subscribe() {
+    CleverPush.subscribe();
+  }
+
+  unsubscribe() {
+    this.setState({ subscriptionId: null });
+    CleverPush.unsubscribe();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>CleverPush React Native Example App</Text>
         <Text>Subscription ID: {this.state.subscriptionId || '-'}</Text>
+
+        <TextInput
+          onChangeText={(country) => this.setState({ country })}
+          value={this.state.country}
+          style={{padding: 10, marginTop: 20, borderColor: 'gray', borderWidth: 1}}
+        />
+        <Button onPress={() => this.setCountry()} title="Set Country" />
+
+        {this.state.subscriptionId ? (
+          <Button onPress={() => this.unsubscribe()} title="Unsubscribe" />
+        ) : (
+          <Button onPress={() => this.subscribe()} title="Subscribe" />
+        )}
       </View>
     );
   }
