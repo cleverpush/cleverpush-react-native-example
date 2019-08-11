@@ -16,7 +16,9 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    CleverPush.init('oQGjvibFX9ghtxLqG');
+    CleverPush.init('oQGjvibFX9ghtxLqG', {
+      autoRegister: false
+    });
 
     CleverPush.addEventListener('opened', this.onOpened);
     CleverPush.addEventListener('subscribed', this.onSubscribed);

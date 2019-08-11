@@ -1,7 +1,7 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - CleverPush (0.1.1)
-  - cleverpush-react-native (0.0.13):
+  - CleverPush (0.1.4)
+  - cleverpush-react-native (0.0.19):
     - CleverPush
     - React
   - DoubleConversion (1.1.6)
@@ -199,8 +199,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CleverPush: 1ca9473065b61989ac78ff6c2cb0ae40da0fe7c9
-  cleverpush-react-native: fd5e107f89a38837e6bd9be3516edc91d2f15f9e
+  CleverPush: d95ffefc5862d4b197227c5fc7a55923d007997f
+  cleverpush-react-native: 7a2505b99505d1172c708f1f7def4f09c7eac427
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXAppLoaderProvider: 43e88f7967ab45672e66b6f90f9e79b5718bf960
   EXConstants: 831e6b7ad2f3e8c6153d077aca7e849364d948a8
