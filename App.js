@@ -1,21 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
 import CleverPush from 'cleverpush-react-native';
+import { View, Text } from 'react-native';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
+class App extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-      subscriptionId: null
+      pushEnabled: false
     };
 
-    this.onSubscribed = this.onSubscribed.bind(this);
     this.onOpened = this.onOpened.bind(this);
-  }
+    this.onSubscribed = this.onSubscribed.bind(this);
 
-  componentWillMount() {
-    CleverPush.init('oQGjvibFX9ghtxLqG');
+    CleverPush.init('CLEVERPUSH_CHANNEL_ID');
+
+    CleverPush.isSubscribed((err, res) => {
+      this.setState({ pushEnabled: res });
+    });
 
     CleverPush.addEventListener('opened', this.onOpened);
     CleverPush.addEventListener('subscribed', this.onSubscribed);
@@ -27,29 +29,21 @@ export default class App extends React.Component {
   }
 
   onOpened(openResult) {
-    console.log('CleverPush: [JS] Notification opened:', openResult);
+    console.log('Notification opened:', openResult);
   }
 
-  onSubscribed(subscribedResult) {
-    console.log('CleverPush: [JS] Subscribed with ID:', subscribedResult);
-    this.setState({ subscriptionId: subscribedResult.id });
+  onSubscribed(id) {
+    this.setState({ pushEnabled: true });
+    console.log('Subscribed:', id);
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>CleverPush React Native Example App</Text>
-        <Text>Subscription ID: {this.state.subscriptionId || '-'}</Text>
+      <View>
+        <Text>CleverPush Example App</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

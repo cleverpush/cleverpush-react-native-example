@@ -1,17 +1,38 @@
 {
-  "name": "empty-project-template",
-  "main": "node_modules/expo/AppEntry.js",
-  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "postinstall": "npx jetifier"
   },
   "dependencies": {
-    "cleverpush-react-native": "git+https://github.com/cleverpush/cleverpush-react-native-sdk.git",
-    "expo": "^30.0.1",
-    "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
-  }
+    "babel-preset-expo": "^8.0.0",
+    "chalk": "^2.4.2",
+    "cleverpush-react-native": "^0.2.3",
+    "command-exists": "^1.2.8",
+    "commander": "^2.20.0",
+    "cordova-res-generator": "^0.4.2",
+    "expo-web-browser": "^5.0.3",
+    "imagemagick-cli": "^0.5.0",
+    "js-base64": "^2.5.1",
+    "mkdirp": "^0.5.1",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
+    "react-native-unimodules": "0.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "babel-jest": "24.1.0",
+    "jest": "24.9.0",
+    "jetifier": "^1.6.4",
+    "metro-react-native-babel-preset": "0.56.0",
+    "react-test-renderer": "16.9.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "private": true
 }

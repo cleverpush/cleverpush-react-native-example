@@ -1,0 +1,10 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/CleverPush/CleverPush_iOS_SDK/Framework"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/DoubleConversion" "${PODS_ROOT}/Headers/Public/FBLazyVector" "${PODS_ROOT}/Headers/Public/FBReactNativeSpec" "${PODS_ROOT}/Headers/Public/RCTRequired" "${PODS_ROOT}/Headers/Public/RCTTypeSafety" "${PODS_ROOT}/Headers/Public/RNFS" "${PODS_ROOT}/Headers/Public/RNGestureHandler" "${PODS_ROOT}/Headers/Public/RNVectorIcons" "${PODS_ROOT}/Headers/Public/React-Core" "${PODS_ROOT}/Headers/Public/React-RCTBlob" "${PODS_ROOT}/Headers/Public/React-RCTText" "${PODS_ROOT}/Headers/Public/React-cxxreact" "${PODS_ROOT}/Headers/Public/React-jsi" "${PODS_ROOT}/Headers/Public/React-jsiexecutor" "${PODS_ROOT}/Headers/Public/React-jsinspector" "${PODS_ROOT}/Headers/Public/ReactCommon" "${PODS_ROOT}/Headers/Public/Yoga" "${PODS_ROOT}/Headers/Public/cleverpush-react-native" "${PODS_ROOT}/Headers/Public/glog" "${PODS_ROOT}/Headers/Public/react-native-background-downloader" "${PODS_ROOT}/Headers/Public/react-native-config" "${PODS_ROOT}/Headers/Public/react-native-netinfo" "${PODS_ROOT}/Headers/Public/react-native-splash-screen" "${PODS_ROOT}/Headers/Public/react-native-webview" "$(PODS_ROOT)/Headers/Private/React-Core"
+OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_ROOT}/Headers/Public/DoubleConversion/DoubleConversion.modulemap"
+OTHER_LDFLAGS = $(inherited) -l"stdc++" -framework "JavaScriptCore" -framework "SystemConfiguration" -framework "UIKit" -framework "UserNotifications"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_ROOT}/Headers/Public/DoubleConversion/DoubleConversion.modulemap"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
