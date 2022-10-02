@@ -7,20 +7,33 @@ class App extends Component {
     super(props);
 
     this.state = {
-      pushEnabled: false
+      pushEnabled: false,
+      pushId: null,
     };
 
     this.onOpened = this.onOpened.bind(this);
     this.onSubscribed = this.onSubscribed.bind(this);
 
-    CleverPush.init('CLEVERPUSH_CHANNEL_ID');
+    CleverPush.enableDevelopmentMode();
+    CleverPush.setIncrementBadge(true);
+    CleverPush.setAutoClearBadge(false);
 
-    CleverPush.isSubscribed((err, res) => {
-      this.setState({ pushEnabled: res });
-    });
+    CleverPush.init('mpE96RmzLQRyT9iRq'), {
+      autoRegister: false,
+    };
 
     CleverPush.addEventListener('opened', this.onOpened);
     CleverPush.addEventListener('subscribed', this.onSubscribed);
+
+    CleverPush.isSubscribed((err, isSubscribed) => {
+      if (err || !isSubscribed) {
+        console.warn('Was not subscribed, subscribing now!');
+        CleverPush.subscribe();
+      }
+      CleverPush.trackPageView('https://google.com/asd', { test: 'test' })
+      this.setState({ pushEnabled: isSubscribed });
+    });
+
   }
 
   componentWillUnmount() {
@@ -32,15 +45,17 @@ class App extends Component {
     console.log('Notification opened:', openResult);
   }
 
-  onSubscribed(id) {
-    this.setState({ pushEnabled: true });
-    console.log('Subscribed:', id);
+  onSubscribed(res) {
+    this.setState({ pushEnabled: true, pushId: res ? res.id : null });
+    console.log('Subscribed:', res.id);
   }
 
   render() {
     return (
-      <View>
-        <Text>CleverPush Example App</Text>
+      <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 100 }}>
+        <Text style={{ fontSize: 18, marginBottom: 20 }}>CleverPush Example App</Text>
+        <Text style={{ fontSize: 16, marginBottom: 5 }}>CleverPush Status: {this.state.pushEnabled ? 'enabled' : 'disabled'}</Text>
+        <Text style={{ fontSize: 16 }}>CleverPush ID: {this.state.pushId}</Text>
       </View>
     );
   }
