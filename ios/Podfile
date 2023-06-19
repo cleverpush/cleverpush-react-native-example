@@ -1,3 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, '9.0'
 
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
@@ -32,24 +34,8 @@ target 'cleverpush-react-native-example' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
-
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
-  pod 'cleverpush-react-native', :path => '../node_modules/cleverpush-react-native'
-
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
-
-  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
-
-  pod 'RNFS', :path => '../node_modules/react-native-fs'
-
-  pod 'react-native-background-downloader', :path => '../node_modules/react-native-background-downloader'
-
   target 'CleverPushNotificationServiceExtension' do
-    pod 'CleverPush', '~> 0.2.16'
+    pod 'CleverPush'
   end
 
   target 'cleverpush-react-native-exampleTests' do
@@ -60,20 +46,34 @@ target 'cleverpush-react-native-example' do
 end
 
 post_install do |installer|
+  ## Fix for XCode 12.5
+  find_and_replace("../node_modules/react-native/React/CxxBridge/RCTCxxBridge.mm",
+  "_initializeModules:(NSArray<id<RCTBridgeModule>> *)modules", "_initializeModules:(NSArray<Class> *)modules")
+  find_and_replace("../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm",
+      "RCTBridgeModuleNameForClass(module))", "RCTBridgeModuleNameForClass(Class(module)))")
+
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
     end
 
-    if target.name == 'react-native-config'
-      phase = target.project.new(Xcodeproj::Project::Object::PBXShellScriptBuildPhase)
-      phase.shell_script = "cd ../../"\
-      " && RNC_ROOT=./node_modules/react-native-config/"\
-      " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
-      " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
-
-      target.build_phases << phase
-      target.build_phases.move(phase,0)
+    if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+      target.build_configurations.each do |config|
+          config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+      end
     end
   end
+end
+
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+      text = File.read(name)
+      replace = text.gsub(findstr,replacestr)
+      if text != replace
+          puts "Fix: " + name
+          File.open(name, "w") { |file| file.puts replace }
+          STDOUT.flush
+      end
+  end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
 end

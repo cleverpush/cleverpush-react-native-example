@@ -1,1 +1,1 @@
-../../../../../node_modules/cleverpush-react-native/ios/RCTCleverPush/RCTCleverPush.h
+../../../../../../cleverpush-react-native-sdk/ios/RCTCleverPush/RCTCleverPush.h

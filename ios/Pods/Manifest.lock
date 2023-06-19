@@ -1,8 +1,8 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - CleverPush (0.2.16)
-  - cleverpush-react-native (0.2.1):
-    - CleverPush (~> 0.2.16)
+  - CleverPush (1.22.0)
+  - cleverpush-react-native (1.4.8):
+    - CleverPush (~> 1.22.0)
     - React
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.61.2)
@@ -186,16 +186,6 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
   - React-jsinspector (0.61.2)
-  - react-native-background-downloader (1.0.0):
-    - React
-  - react-native-config (0.11.7):
-    - React
-  - react-native-netinfo (4.6.0):
-    - React
-  - react-native-splash-screen (3.2.0):
-    - React
-  - react-native-webview (7.6.0):
-    - React
   - React-RCTActionSheet (0.61.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.2)
   - React-RCTAnimation (0.61.2):
@@ -231,17 +221,11 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
     - ReactCommon/jscallinvoker (= 0.61.2)
-  - RNFS (2.16.1):
-    - React
-  - RNGestureHandler (1.5.0):
-    - React
-  - RNVectorIcons (6.6.0):
-    - React
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - CleverPush (~> 0.2.16)
-  - cleverpush-react-native (from `../node_modules/cleverpush-react-native`)
+  - CleverPush
+  - cleverpush-react-native (from `../../cleverpush-react-native-sdk`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -258,11 +242,6 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-background-downloader (from `../node_modules/react-native-background-downloader`)
-  - react-native-config (from `../node_modules/react-native-config`)
-  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
-  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
-  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -274,19 +253,16 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNFS (from `../node_modules/react-native-fs`)
-  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - boost-for-react-native
     - CleverPush
 
 EXTERNAL SOURCES:
   cleverpush-react-native:
-    :path: "../node_modules/cleverpush-react-native"
+    :path: "../../cleverpush-react-native-sdk"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -315,16 +291,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-background-downloader:
-    :path: "../node_modules/react-native-background-downloader"
-  react-native-config:
-    :path: "../node_modules/react-native-config"
-  react-native-netinfo:
-    :path: "../node_modules/@react-native-community/netinfo"
-  react-native-splash-screen:
-    :path: "../node_modules/react-native-splash-screen"
-  react-native-webview:
-    :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -345,19 +311,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNFS:
-    :path: "../node_modules/react-native-fs"
-  RNGestureHandler:
-    :path: "../node_modules/react-native-gesture-handler"
-  RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CleverPush: f5f103ec10f83b7f2fa62008e01962fd29343cd4
-  cleverpush-react-native: 74d7a335ce60dd57d32cdb667c6110c6395c42b5
+  CleverPush: 3f8fd14d441444bd659b49ba6822213e3c404cc9
+  cleverpush-react-native: fb957bc68d2bd823d06fe68b2b5edcb80eaa2fb9
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: 68b6a76960fbd8ecd9fb7ce0aadd3329c3340a99
   FBReactNativeSpec: 5a764c60abdc3336a213e5310c40b74741f32839
@@ -372,11 +332,6 @@ SPEC CHECKSUMS:
   React-jsi: 32285a21b1b24c36060493ed3057a34677d58d09
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
-  react-native-background-downloader: 30c70d39920c5e9c6c37ed270f27b9f826239113
-  react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-netinfo: bd4c115afdf0821b8ddb6c59ef3ddc5f0a7e8ad0
-  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-webview: 711cef318a554093b09a5b871894011435d87a8d
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -387,11 +342,8 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  RNFS: 795866388a01de4e470f3b1041a99cf20a343844
-  RNGestureHandler: a4ddde1ffc6e590c8127b8b7eabfdade45475c74
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: 8e74960bcb3497b563e8e308d77eb54c534944c0
+PODFILE CHECKSUM: 1a4666023c9bca62fafb7b94da3d3cece55a6dfb
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.11.3

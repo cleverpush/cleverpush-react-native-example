@@ -1,1 +1,1 @@
-../../../../../node_modules/cleverpush-react-native/ios/RCTCleverPush/RCTCleverPushEventEmitter.h
+../../../../../../cleverpush-react-native-sdk/ios/RCTCleverPush/RCTCleverPushEventEmitter.h
